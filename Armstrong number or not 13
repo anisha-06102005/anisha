@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Strong {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n >= 100 && n <= 999) {
+            int a = n / 100;
+            int b = (n / 10) % 10;
+            int c = n % 10;
+            int sum = (a * a * a) + (b * b * b) + (c * c * c);
+            if (sum == n)
+                System.out.println("Yes");
+            else
+                System.out.println("No");
+        } 
+        else {
+            System.out.println("No");
+        }
+    }
+}
