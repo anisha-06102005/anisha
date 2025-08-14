@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);        
+        int n = sc.nextInt();
+        int[] arr = new int[n];        
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }        
+        int Count = 0;
+        for (int i = 0; i < n; i++) {
+            boolean Distinct = true;            
+            for (int j = 0; j < i; j++) {
+                if (arr[i] == arr[j]) {
+                    Distinct = false;
+                    break;
+                }
+            }
+            if (Distinct) {
+                Count++;
+            }
+        }     
+        if (Count == 1) {
+            System.out.println("There are " + Count + " distinct element in the array.");
+        } else {
+            System.out.println("There are " + Count + " distinct elements in the array.");
+        }
+    }
+}
