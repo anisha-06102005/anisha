@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Sum {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int evenCount = 0, oddCount = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) evenCount++;
+            else oddCount++;
+        }
+        int[] evenPos = new int[evenCount];
+        int[] oddPos = new int[oddCount];
+        int e = 0, o = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                evenPos[e] = arr[i];
+                e++;
+            } else {
+                oddPos[o] = arr[i];
+                o++;
+            }
+        }
+        for (int i = 0; i < evenCount - 1; i++) {
+            for (int j = 0; j < evenCount - i - 1; j++) {
+                if (evenPos[j] > evenPos[j + 1]) {
+                    int temp = evenPos[j];
+                    evenPos[j] = evenPos[j + 1];
+                    evenPos[j + 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < oddCount - 1; i++) {
+            for (int j = 0; j < oddCount - i - 1; j++) {
+                if (oddPos[j] > oddPos[j + 1]) {
+                    int temp = oddPos[j];
+                    oddPos[j] = oddPos[j + 1];
+                    oddPos[j + 1] = temp;
+                }
+            }
+        }
+        int secondLargestEven = evenPos[evenCount - 2];
+        int secondSmallestOdd = oddPos[1];
+        int sum = secondLargestEven + secondSmallestOdd;
+        System.out.println("Sum=" + sum);
+    }
+}
